@@ -9,7 +9,10 @@ export default function App() {
   const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const configuredApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_URL = /^https?:\/\//.test(configuredApiUrl)
+    ? configuredApiUrl
+    : `https://${configuredApiUrl}`;
 
   const handleFileSelection = (file) => {
     if (!file) return;
