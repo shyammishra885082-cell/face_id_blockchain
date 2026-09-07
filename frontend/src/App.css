@@ -1,0 +1,123 @@
+﻿:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #0ea5e9;
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --success: #10b981;
+  --error: #ef4444;
+  --text: #0f172a;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+  color: var(--text);
+}
+
+button, input { font: inherit; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.topbar {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  padding: 28px 0;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.16);
+}
+.brand { display: flex; align-items: center; gap: 18px; }
+.brand-mark { font-size: 2.5rem; }
+.brand h1 { margin: 0; font-size: 2.1rem; }
+.brand p { margin: 4px 0 0; opacity: 0.9; }
+.page { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 16px; }
+.upload-panel, .results-panel {
+  width: min(100%, 960px);
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(226,232,240, 0.8);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+.dropzone {
+  min-height: 360px;
+  border: 2px dashed var(--border);
+  border-radius: 18px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+.dropzone:hover { border-color: var(--primary); background: #eff6ff; }
+.preview {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  display: block;
+}
+.upload-copy {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+}
+.upload-icon { font-size: 3rem; margin-bottom: 18px; }
+.upload-copy h2 { margin: 0 0 8px; font-size: 2rem; }
+.upload-copy p { margin: 0 0 8px; }
+.upload-copy span { font-size: 0.9rem; color: var(--muted); opacity: 0.8; }
+.error-box {
+  margin-top: 18px; background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: var(--error);
+  border-radius: 12px; padding: 12px 14px; font-weight: 600;
+}
+.actions, .result-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; }
+.primary-btn, .secondary-btn {
+  border: none; border-radius: 12px; padding: 14px 22px; font-weight: 700; cursor: pointer; transition: transform 0.1s ease;
+}
+.primary-btn {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white; box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+}
+.secondary-btn {
+  background: #e2e8f0; color: var(--text);
+}
+.primary-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.primary-btn:hover:not(:disabled), .secondary-btn:hover { transform: translateY(-1px); }
+.result-header {
+  display:flex; align-items:center; gap:18px; margin-bottom:24px;
+}
+.success-badge {
+  width: 52px; height: 52px; border-radius: 50%; background: rgba(16,185,129,0.12); color: var(--success); font-size: 2rem; display:grid; place-items:center; font-weight:700;
+}
+.result-header h2 { margin:0; }
+.result-header p { margin:8px 0 0; color: var(--muted); }
+.card-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+.result-card {
+  background: #ffffff; border:1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px rgba(15,23,42,0.02);
+}
+.result-card h3 { margin-top:0; margin-bottom: 14px; }
+.meta-row {
+  display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:8px; font-size:0.95rem; color: var(--muted);
+}
+.meta-row strong, .meta-row code { color: var(--text); }
+.hash-box {
+  display:block; word-break: break-all; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 12px; line-height:1.5;
+}
+.json-panel { margin-top:20px; border:1px solid var(--border); border-radius:12px; background:#f8fafc; }
+.json-panel summary { cursor:pointer; padding:14px 16px; font-weight:600; }
+.json-panel pre { margin:0; padding: 0 16px 16px; white-space: pre-wrap; word-break: break-word; }
+@media (max-width: 640px) {
+  .topbar { padding: 22px 0; }
+  .brand { gap: 10px; }
+  .brand h1 { font-size: 1.5rem; }
+  .upload-panel, .results-panel { padding: 16px; }
+  .dropzone { min-height: 260px; }
+  .actions, .result-actions { flex-direction: column; }
+  .primary-btn, .secondary-btn { width: 100%; }
+}
